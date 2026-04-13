@@ -1,0 +1,62 @@
+<section id="projects" class=" py-24 scroll-mt-24">
+  <div class="container mx-auto px-6 max-w-6xl">
+
+    <h2 class="text-3xl font-bold text-white mb-12 relative inline-block">
+      ผลงานล่าสุด
+      <span
+        class="absolute -bottom-2 left-0 w-12 h-1 bg-cyan-400 rounded-full shadow-[0_0_12px_rgba(34,211,238,0.6)]"></span>
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      @for (project of projects; track project.id) {
+      <div
+        class="bg-slate-800/40 rounded-2xl overflow-hidden shadow-lg hover:shadow-[0_10px_30px_rgba(59,130,246,0.15)] transition-all duration-500 border border-slate-700/50 hover:border-cyan-500/50 group backdrop-blur-sm hover:-translate-y-2 flex flex-col h-full">
+
+        <div class="h-48 transition bg-slate-800 relative overflow-hidden">
+          <div
+            class="absolute inset-0 flex items-center justify-center text-slate-600 font-medium text-sm bg-slate-800">
+            <img [src]="project.imageUrl || 'assets/images/r2c-logo-blue.png'"
+              (error)="$any($event.target).src = 'assets/images/r2c-logo-blue.png'" alt="{{ project.title }}"
+              class="w-full h-full object-cover">
+          </div>
+
+          <div class="absolute inset-0 bg-blue-600/0 group-hover:bg-blue-600/20 transition-all duration-300"></div>
+        </div>
+
+        <div class="p-6 flex flex-col relative">
+
+          <h3 class="text-xl font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors duration-300">
+            {{ project.title }}
+          </h3>
+
+          <p class="font-medium text-xs mb-4">
+            <span class="text-blue-400">{{ project.role }}</span>
+            <span class="text-slate-600 mx-1">|</span>
+            <span class="text-cyan-400">{{ project.company }}</span>
+          </p>
+
+          <p class="text-slate-400 text-sm mb-6 line-clamp-3 leading-relaxed">
+            {{ project.description.overview }}
+          </p>
+
+          <div class="mt-auto pt-4 border-t border-slate-700/50">
+            <a [routerLink]="['/projects', project.id]"
+              class="inline-flex items-center gap-2 text-sm font-bold text-cyan-400 bg-cyan-900/10 px-4 py-2.5 rounded-lg hover:bg-cyan-500 hover:text-white border border-cyan-800/30 hover:border-cyan-400 transition-all duration-300 shadow-sm hover:shadow-[0_0_15px_rgba(34,211,238,0.4)] w-fit">
+              ดูรายละเอียด
+              <svg xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
+
+          </div>
+
+        </div>
+      </div>
+      }
+
+    </div>
+  </div>
+</section>

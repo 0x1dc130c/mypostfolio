@@ -1,0 +1,99 @@
+@if (project) {
+<div class="min-h-screen bg-[#0B1120] text-slate-200 py-10 relative overflow-hidden mt-12">
+
+  <div
+    class="absolute top-[-10%] left-1/2 -translate-x-1/2 w-full max-w-2xl h-[500px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none">
+  </div>
+
+  <div class="container mx-auto px-6 max-w-4xl relative z-10">
+
+    <a routerLink="/home" fragment="projects"
+      class="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-bold mb-8 transition group">
+      <span class="mr-2 group-hover:-translate-x-1 transition-transform">&larr;</span> กลับไปหน้าผลงานทั้งหมด
+    </a>
+
+    <div class="h-64 md:h-96 bg-slate-800/50 relative overflow-hidden flex items-center justify-center rounded-xl">
+
+      <img #imgRef [src]="project.imageUrl || 'assets/images/r2c-logo-blue.png'" (error)="
+      imgRef.src = 'assets/images/r2c-logo-blue.png';
+      imgRef.className = 'w-auto h-auto max-w-full max-h-full object-contain p-8'
+    " alt="{{ project.title }}"
+        [class]="project.imageUrl ? 'w-full h-full object-cover' : 'w-auto h-auto max-w-full max-h-full object-contain p-8'">
+
+      <div class="absolute inset-0 bg-blue-600/0 hover:bg-blue-600/20 transition-all duration-300"></div>
+
+    </div>
+    <div class="p-8 md:p-12">
+
+      <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-8">
+        <div>
+          <h1 class="text-3xl md:text-4xl font-bold text-white mb-2">{{ project.title }}</h1>
+          <p class="text-xl text-cyan-400 font-medium">{{ project.role }}</p>
+        </div>
+        <span
+          class="inline-block px-5 py-2 bg-cyan-950/50 text-cyan-300 rounded-full text-sm font-bold whitespace-nowrap border border-cyan-800/50 shadow-[0_0_10px_rgba(34,211,238,0.1)]">
+          {{ project.period }}
+        </span>
+      </div>
+
+      <div class="mb-10 pb-8 border-b border-slate-800 flex flex-col sm:flex-row gap-4 sm:gap-8 text-slate-400">
+        <p class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+            </path>
+          </svg>
+          {{ project.company }}
+        </p>
+        <p class="flex items-center gap-2 uppercase tracking-wide text-sm font-bold">
+          <svg class="w-5 h-5 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z">
+            </path>
+          </svg>
+          {{ project.type }}
+        </p>
+      </div>
+
+      <h3 class="text-2xl font-bold text-white mb-4">ภาพรวมโปรเจกต์</h3>
+      <p class="text-slate-300 leading-relaxed mb-8 text-lg">
+        {{ project.description.overview }}
+      </p>
+
+      <h3 class="text-xl font-bold text-white mb-4">หน้าที่รับผิดชอบและรายละเอียด</h3>
+      <ul class="list-disc list-outside ml-5 text-slate-300 leading-relaxed mb-10 space-y-2 text-lg marker:text-cyan-500">
+        @for (item of project.description.responsibilities; track item) {
+          <li>{{ item }}</li>
+        }
+      </ul>
+      <h3 class="text-xl font-bold text-white mb-4">เทคโนโลยีที่ใช้ (Tech Stack)</h3>
+      <div class="flex flex-wrap gap-3 mb-8">
+        @for (tech of project.technologies; track tech) {
+        <span
+          class="bg-slate-800/80 text-cyan-50 px-4 py-2 rounded-lg text-sm font-semibold border border-slate-700 hover:border-cyan-400 hover:text-cyan-300 transition-colors shadow-sm cursor-default">
+          {{ tech }}
+        </span>
+        }
+      </div>
+
+      @if (project.link) {
+      <div class="mt-12 pt-8 border-t border-slate-800">
+        <a [href]="project.link" target="_blank"
+          class="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-8 rounded-xl transition-all shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_30px_rgba(59,130,246,0.6)] hover:-translate-y-1">
+          เยี่ยมชมเว็บไซต์ &rarr;
+        </a>
+      </div>
+      }
+    </div>
+  </div>
+</div>
+
+} @else {
+<div class="min-h-screen flex items-center justify-center bg-[#0B1120]">
+  <div class="text-center p-8 bg-slate-900/50 backdrop-blur-md rounded-3xl border border-slate-800">
+    <h2 class="text-2xl font-bold text-slate-300 mb-4">ไม่พบข้อมูลโปรเจกต์ที่คุณตามหา</h2>
+    <a routerLink="/home"
+      class="text-cyan-400 hover:text-cyan-300 hover:underline font-bold transition-colors">กลับไปหน้าหลัก</a>
+  </div>
+</div>
+}

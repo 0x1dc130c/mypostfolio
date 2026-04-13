@@ -1,0 +1,45 @@
+<section id="about-details" class="py-24 relative z-10">
+  <div class="container mx-auto px-6 max-w-6xl relative z-10">
+    
+    <div class="mb-16 text-center md:text-left">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 relative inline-block">
+        {{ aboutData.title }}
+        <span class="absolute -bottom-2 left-0 w-12 h-1 bg-cyan-500 rounded-full shadow-[0_0_10px_rgba(6,182,212,0.5)]"></span>
+      </h2>
+    </div>
+
+    <div class="flex flex-col lg:flex-row gap-16 items-start">
+      
+      <div class="lg:w-1/2 space-y-6">
+        <h3 class="text-2xl font-bold text-blue-100 flex items-center gap-2">
+          Get to know me!
+        </h3>
+        <div class="text-slate-300 leading-relaxed space-y-5 text-lg">
+          <p>{{ aboutData.description1 }}</p>
+          <p>{{ aboutData.description2 }}</p>
+        </div>
+      </div>
+
+      <div class="lg:w-1/2 w-full">
+        <h3 class="text-2xl font-bold text-blue-100 mb-6">My Skills</h3>
+        <div class="space-y-6">
+          @for (group of skillGroups; track group.category) {
+            <div class="bg-slate-800/60 p-6 rounded-2xl border border-slate-700/50 hover:border-cyan-500/50 hover:shadow-[0_0_15px_rgba(6,182,212,0.3)] transition duration-300 backdrop-blur-md">
+              <h4 class="text-lg font-bold text-cyan-400 mb-4 border-b border-slate-700/50 pb-2">
+                {{ group.category }}
+              </h4>
+              <div class="flex flex-wrap gap-2.5">
+                @for (skill of group.items; track skill) {
+                  <span class="px-4 py-2 bg-slate-900/80 text-slate-300 rounded-lg text-sm font-semibold border border-slate-700 hover:text-cyan-300 hover:border-cyan-500 hover:bg-slate-800 transition shadow-sm cursor-default">
+                    {{ skill }}
+                  </span>
+                }
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>

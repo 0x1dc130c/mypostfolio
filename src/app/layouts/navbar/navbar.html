@@ -1,0 +1,36 @@
+<nav class="bg-slate-950/80 backdrop-blur-md top-0 z-50 border-b border-slate-800/50 relative">
+  
+  <div class="container mx-auto px-6 py-5 flex justify-between items-center">
+    
+    <a routerLink="/home" class="text-xl font-bold tracking-tight text-white cursor-pointer">Portfolio.</a>
+    
+    <div class="hidden md:flex space-x-8 text-sm font-semibold">
+      <a (click)="scrollTo($event, 'about')" class="text-slate-300 hover:text-cyan-400 transition cursor-pointer">About</a>
+      <a (click)="scrollTo($event, 'experience')" class="text-slate-300 hover:text-cyan-400 transition cursor-pointer">Experience</a>
+      <a (click)="scrollTo($event, 'projects')" class="text-slate-300 hover:text-cyan-400 transition cursor-pointer">Projects</a>
+      <a (click)="scrollTo($event, 'contact')" class="text-slate-300 hover:text-cyan-400 transition cursor-pointer">Contact</a>
+    </div>
+
+    <button (click)="toggleMenu()" class="md:hidden text-slate-300 hover:text-white focus:outline-none transition">
+      @if (!isMobileMenuOpen) {
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      } @else {
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      }
+    </button>
+  </div>
+
+  @if (isMobileMenuOpen) {
+    <div class="md:hidden absolute top-full left-0 w-full bg-slate-900/95 backdrop-blur-md border-b border-slate-800 shadow-xl py-6 px-6 flex flex-col space-y-6 text-sm font-semibold">
+      <a (click)="scrollTo($event, 'about')" class="text-slate-300 hover:text-cyan-400 transition cursor-pointer">About</a>
+      <a (click)="scrollTo($event, 'experience')" class="text-slate-300 hover:text-cyan-400 transition cursor-pointer">Experience</a>
+      <a (click)="scrollTo($event, 'projects')" class="text-slate-300 hover:text-cyan-400 transition cursor-pointer">Projects</a>
+      <a (click)="scrollTo($event, 'contact')" class="text-slate-300 hover:text-cyan-400 transition cursor-pointer">Contact</a>
+    </div>
+  }
+
+</nav>

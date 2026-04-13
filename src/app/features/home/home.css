@@ -1,0 +1,96 @@
+/* 🌌 สร้างดวงดาวแบบจุดๆ ด้วย CSS Box-Shadow */
+.stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%; 
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden; 
+}
+
+/* เลเยอร์ 1: ดาวดวงเล็กๆ ไกลๆ (เยอะมาก) */
+.stars::before {
+  content: "";
+  position: absolute;
+  top: 0; 
+  left: 0;
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  
+  box-shadow: 
+    10vw 20vh #FFF, 30vw 50vh #FFF, 50vw 10vh #FFF, 80vw 60vh #FFF, 95vw 30vh #FFF,
+    15vw 80vh #FFF, 90vw 90vh #FFF, 60vw 15vh #FFF, 25vw 35vh #FFF, 65vw 75vh #FFF,
+    40vw 5vh #FFF, 75vw 85vh #FFF, 5vw 45vh #FFF, 85vw 25vh #FFF, 45vw 95vh #FFF,
+    20vw 15vh rgba(255,255,255,0.5), 35vw 55vh rgba(255,255,255,0.8), 55vw 25vh rgba(255,255,255,0.6),
+    85vw 65vh rgba(255,255,255,0.7), 90vw 45vh rgba(255,255,255,0.4), 10vw 85vh rgba(255,255,255,0.9);
+  border-radius: 50%;
+  
+  animation: twinkle 5s infinite ease-in-out, moveStarsSlow 200s linear infinite; 
+}
+
+/* เลเยอร์ 2: ดาวดวงใหญ่ขึ้นมาหน่อย และดาวสีฟ้า */
+.stars::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 2px;
+  background: transparent;
+
+  box-shadow: 
+    18vw 18vh #FFF, 38vw 48vh #FFF, 58vw 8vh #FFF, 88vw 58vh #FFF, 75vw 28vh #FFF, 28vw 78vh #FFF,
+    70vw 40vh rgba(100,200,255,0.8), 95vw 20vh rgba(100,200,255,0.6), 15vw 60vh rgba(100,200,255,0.7);
+  border-radius: 50%;
+  
+  animation-delay: 2s;
+  animation: twinkle 3s infinite ease-in-out, moveStarsSlow 150s linear infinite reverse; 
+}
+
+/* 🌟 [NEW] เลเยอร์ 3: ดาวที่เบลอๆ จำลองละอองดาว (Nebula Dust) */
+.stars {
+  /* ใช้ Box Shadow ของตัว .stars เอง เป็นดาวดวงใหญ่ๆ เบลอๆ */
+  box-shadow: inset 0 0 0 transparent; /* ป้องกัน Error เบื้องต้น */
+}
+
+/* แอนิเมชันกระพริบ */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* แอนิเมชันลอยไปมาช้าๆ (ขยับแบบสุ่ม) */
+@keyframes moveStarsSlow {
+  0% { transform: translate(0, 0); }
+  33% { transform: translate(-15px, 10px); }
+  66% { transform: translate(10px, -15px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* ปิดการเคลื่อนที่บนมือถือ กันเวียนหัว */
+@media (max-width: 768px) {
+  .stars::before, .stars::after {
+    animation: twinkle 4s infinite ease-in-out; 
+  }
+}
+
+/* แอนิเมชันหลุมดำและลอยตัว */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 15s linear infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
