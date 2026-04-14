@@ -48,7 +48,7 @@ export class ProjectDetails {
     },
     {
       id: 'r2c-web-app',
-      title: 'Enterprise Web Application',
+      title: 'Captive Portal - Laos Airport',
       role: 'Web Developer',
       company: 'Ready to connect (R2C)',
       period: 'มีนาคม 2025 - ธันวาคม 2025',
@@ -57,11 +57,11 @@ export class ProjectDetails {
       technologies: ['Angular 20', 'Tailwind CSS', 'NestJS'],
       link: '',
       description: {
-        overview: 'พัฒนาระบบ Enterprise Web Application โดยนำเทคโนโลยีสมัยใหม่มาประยุกต์ใช้ในการสร้างระบบที่รองรับการจัดการข้อมูลจำนวนมากและตอบโจทย์กระบวนการทางธุรกิจ',
+        overview: 'พัฒนาระบบหน้าเว็บ Captive Portal สำหรับการเข้าใช้งาน Wi-Fi ของสนามบินในประเทศลาว พร้อมทั้งพัฒนาระบบจัดการหลังบ้าน (Back-office)',
         responsibilities: [
-          'พัฒนา Front-end ฝั่ง Web Application ด้วย Angular 20 และออกแบบ UI Component ด้วย Tailwind CSS',
-          'พัฒนาระบบจัดการผู้ใช้งาน โดยเน้นการใช้ Role-based access ที่เข้าใจง่ายและลดความซับซ้อนของโครงสร้างสิทธิ์ (Permissions)',
-          'พัฒนาและเชื่อมต่อบริการ Middleware API Service โดยมีการใช้งานร่วมกับเทคโนโลยีฝั่ง Backend ทั้ง NestJS, FastAPI และ .NET (C#)'
+          'พัฒนา Front-end ส่วนของหน้า Captive Portal และหน้าจอระบบจัดการหลังบ้านด้วย Angular และจัดการ UI ด้วย Tailwind CSS',
+          'ปรับปรุงระบบจัดการผู้ใช้งาน (User Management) โดยตัดฟิลด์การกำหนดสิทธิ์ (Permissions) ที่ซับซ้อนในฟอร์มออก และเปลี่ยนมาใช้การกำหนดสิทธิ์แบบ Role-based access เพื่อให้ระบบใช้งานง่ายขึ้น',
+          'พัฒนาและเชื่อมต่อ Middleware API Service เพื่อใช้งานร่วมกับระบบฝั่ง Backend ที่พัฒนาด้วย NestJS,'
         ]
       }
     },
