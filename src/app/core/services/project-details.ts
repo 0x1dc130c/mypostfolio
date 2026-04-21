@@ -49,7 +49,7 @@ export class ProjectDetails {
     {
       id: 'r2c-web-app',
       title: 'Captive Portal - Laos Airport',
-      role: 'Web Developer',
+      role: 'Web Developer (Freelance)',
       company: 'Ready to connect (R2C)',
       period: 'มีนาคม 2025 - ธันวาคม 2025',
       type: 'work',
