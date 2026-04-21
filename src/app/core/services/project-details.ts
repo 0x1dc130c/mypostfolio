@@ -54,7 +54,7 @@ export class ProjectDetails {
       period: 'มีนาคม 2025 - ธันวาคม 2025',
       type: 'work',
       imageUrl: 'assets/images/projects/captive-portal/captive-portal-1.png',
-      technologies: ['Angular 20', 'Tailwind CSS', 'NestJS'],
+      technologies: ['Angular', 'Tailwind CSS', 'NestJS'],
       link: '',
       description: {
         overview: 'พัฒนาระบบหน้าเว็บ Captive Portal สำหรับการเข้าใช้งาน Wi-Fi ของสนามบินในประเทศลาว พร้อมทั้งพัฒนาระบบจัดการหลังบ้าน (Back-office)',
